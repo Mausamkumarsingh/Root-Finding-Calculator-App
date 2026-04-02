@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -6,5 +6,9 @@ app = Flask(__name__)
 def home():
     return "Root Finding Calculator Running 🚀"
 
-if __name__ == '__main__':
-    app.run()
+@app.route('/bisection')
+def bisection():
+    # Example dummy response
+    a = request.args.get('a')
+    b = request.args.get('b')
+    return f"Bisection method called with a={a}, b={b}"
